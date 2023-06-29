@@ -26,14 +26,15 @@ export class LastLoginIpComponent {
     }
   }
 
-  parseAuthToken () {
-    let payload = {} as any
-    const token = localStorage.getItem('token')
+  parseAuthToken() {
+    let payload = {} as any;
+    const token = localStorage.getItem('token');
     if (token) {
-      payload = jwtDecode(token)
+      payload = jwtDecode(token);
       if (payload.data.lastLoginIp) {
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        this.lastLoginIp = this.sanitizer.bypassSecurityTrustHtml(`<small>${payload.data.lastLoginIp}</small>`)
+        const lastLoginIp = document.createElement('small');
+        lastLoginIp.textContent = payload.data.lastLoginIp;
+        this.lastLoginIp = this.sanitizer.bypassSecurityTrustHtml(lastLoginIp.innerHTML);
       }
     }
   }
