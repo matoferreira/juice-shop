@@ -46,19 +46,21 @@ module.exports = function login () {
             data: {
               tmpToken: security.authorize({
                 userId: user.data.id,
-                type: 'password_valid_needs_second_factor_token'
-              })
-            }
-          })
+                type: 'password_valid_needs_second_factor_token',
+              }),
+            },
+          });
         } else if (user.data?.id) {
-          afterLogin(user, res, next)
+          afterLogin(user, res, next);
         } else {
-          res.status(401).send(res.__('Invalid email or password.'))
+          res.status(401).send(res.__('Invalid email or password.'));
         }
-      }).catch((error: Error) => {
-        next(error)
       })
-  }
+      .catch((error: Error) => {
+        next(error);
+      });
+  };
+  
   // vuln-code-snippet end loginAdminChallenge loginBenderChallenge loginJimChallenge
 
   function verifyPreLoginChallenges (req: Request) {
