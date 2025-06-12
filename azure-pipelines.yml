@@ -10,10 +10,11 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: NexPloitScan@3
+  inputs:
+    apiToken: '$(APITOKENBRIGHT)'
+    hostname: 'nexploit.app'
+    module: 'dast'
+    discoveryTypes: 'crawler'
+    crawlerUrls: 'https://brokencrystals.com/'
+    scanTests: 'angular_csti, file_upload, csrf, sqli, date_manipulation, full_path_disclosure, cookie_security, directory_listing, header_security, http_method_fuzzing, version_control_systems, jwt, dom_xss, wordpress, secret_tokens'
