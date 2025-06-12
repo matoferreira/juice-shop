@@ -10,11 +10,9 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: NexPloitScan@3
+- task: NexPloitRerunScan@3
   inputs:
     apiToken: '$(APITOKENBRIGHT)'
-    hostname: 'nexploit.app'
-    module: 'dast'
-    discoveryTypes: 'crawler'
-    crawlerUrls: 'https://brokencrystals.com/'
-    scanTests: 'angular_csti, file_upload, csrf, sqli, date_manipulation, full_path_disclosure, cookie_security, directory_listing, header_security, http_method_fuzzing, version_control_systems, jwt, dom_xss, wordpress, secret_tokens'
+    hostname: 'app.brightsec.com'
+    scanId: 'uCU4f96xkjtn95aGjvmiae'
+    name: 'Azure DevOps Pipeline Scan'
