@@ -14,5 +14,5 @@ steps:
   inputs:
     apiToken: '$(APITOKENBRIGHT)'
     hostname: 'app.brightsec.com'
-    scanId: 'uCU4f96xkjtn95aGjvmiae'
+    scanId: 'nCYyuryJXeVYbVLcegdNAu'
     name: 'Azure DevOps Pipeline Scan'
